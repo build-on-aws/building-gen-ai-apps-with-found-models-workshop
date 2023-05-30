@@ -430,8 +430,8 @@ Resources:
       TaskRoleArn: !Ref TaskRole
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
-        - Name: build-on-postly
-          Image: public.ecr.aws/l1s9t3v0/build-on-postly:latest
+        - Name: build-on-poster
+          Image: public.ecr.aws/l1s9t3v0/build-on-poster:latest
           Environment:
             - Name: IMAGE_API
               Value: ''
@@ -448,8 +448,8 @@ Resources:
   BuildOnSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: allow port 80 to build_on_postly
-      GroupName: build_on_postly
+      GroupDescription: allow port 80 to build_on_poster
+      GroupName: build_on_poster
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: '80'

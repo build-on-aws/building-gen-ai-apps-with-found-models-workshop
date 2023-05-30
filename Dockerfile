@@ -7,10 +7,10 @@ ADD requirements.txt /home/
 RUN pip3 install -r requirements.txt
 
 # Add files
-ADD fm_postly_public_st.py /home/
+ADD fm_poster_public_st.py /home/
 
 # Expose port
 EXPOSE 80
 
 # Start App
-CMD [ "streamlit","run" ,"fm_postly_public_st.py","--server.port","80"]
+CMD [ "streamlit","run" ,"fm_poster_public_st.py","--server.port","80"]

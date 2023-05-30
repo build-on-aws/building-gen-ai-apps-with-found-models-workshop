@@ -2,7 +2,7 @@
 
 Welcome to our hands-on workshop on building generative AI applications using Amazon SageMaker and Jumpstart Notebooks with foundational models. In this interactive session, you will learn how to harness the power of AI to create innovative, scalable, and user-friendly solutions for text and image generation tasks. You will be building a tool that will enable content authors to generate attractive images and taglines for their articles.
 
-![The deployed app, that takes text from an article and creates a tagline with a cover image](./build_on_postly_example.png)
+![The deployed app, that takes text from an article and creates a tagline with a cover image](./build_on_poster_example.png)
 
 Throughout the workshop, we will guide you through three key steps to develop and deploy your application:
 

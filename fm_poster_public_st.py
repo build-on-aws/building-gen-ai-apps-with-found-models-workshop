@@ -1,6 +1,6 @@
 """
 Purpose:
-    BuildOn Postly
+    BuildOn Poster
 """
 
 # 3rd party imports
@@ -100,7 +100,7 @@ def main() -> None:
     # Start the streamlit app
 
     st.markdown(
-        "<h1 style='text-align: center;'>BuildOn Postly</h1>", unsafe_allow_html=True
+        "<h1 style='text-align: center;'>BuildOn Poster</h1>", unsafe_allow_html=True
     )
 
     st.markdown(
