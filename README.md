@@ -16,6 +16,9 @@ By the end of this workshop, you will have gained valuable hands-on experience i
 
 Here is the link to the [workshop](https://catalog.workshops.aws/building-gen-ai-apps-with-found-models/en-US)
 
+**Note:** If you are running the CloudFormation in your own account, you must build the Docker image first, and push to your own ECR repo. Then update the template with the image name on line 431. More details can be found here: https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.

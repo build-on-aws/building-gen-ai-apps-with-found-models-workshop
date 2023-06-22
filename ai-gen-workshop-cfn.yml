@@ -428,7 +428,7 @@ Resources:
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
         - Name: build-on-poster
-          Image: public.ecr.aws/o3s1z9h7/build-on-poster:latest
+          Image: # TODO you must build the image, in the repo and push to your ECR -https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
           Environment:
             - Name: IMAGE_API
               Value: ''
