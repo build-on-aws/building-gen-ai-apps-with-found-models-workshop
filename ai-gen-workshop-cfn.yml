@@ -224,8 +224,6 @@ Resources:
         ZipFile: |
           import json
           import boto3
-          import logging
-
 
           def parse_response(query_response):
               """Parse response and return generated image and the prompt"""
@@ -237,7 +235,6 @@ Resources:
           def lambda_handler(event, context):
 
               client = boto3.client('sagemaker-runtime')
-              content_type = "application/json"
               
               data_string = event["body"]
               text = json.loads(data_string)["text"]
@@ -278,12 +275,10 @@ Resources:
         ZipFile: |
           import json
           import boto3
-          import logging
 
           def lambda_handler(event, context):
 
               client = boto3.client('sagemaker-runtime')
-              content_type = "application/json"
               
               data_string = event["body"]
               text = json.loads(data_string)["text"]
@@ -402,6 +397,7 @@ Resources:
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
         - 'arn:aws:iam::aws:policy/AmazonElasticContainerRegistryPublicReadOnly'
+        - 'arn:aws:iam::aws:policy/AWSLambda_FullAccess'
 
   TaskRole:
     Type: AWS::IAM::Role
@@ -416,6 +412,7 @@ Resources:
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/AWSGlueSchemaRegistryFullAccess'
         - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+        - 'arn:aws:iam::aws:policy/AWSLambda_FullAccess'
 
 
   BuildOnTaskDefinition:
@@ -431,7 +428,7 @@ Resources:
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
         - Name: build-on-poster
-          Image: public.ecr.aws/l1s9t3v0/build-on-poster:latest
+          Image: public.ecr.aws/o3s1z9h7/build-on-poster:latest
           Environment:
             - Name: IMAGE_API
               Value: ''
