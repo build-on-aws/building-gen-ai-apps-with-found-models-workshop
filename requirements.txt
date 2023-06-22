@@ -2,3 +2,4 @@ streamlit
 requests
 botocore
 numpy
+aws_requests_auth
