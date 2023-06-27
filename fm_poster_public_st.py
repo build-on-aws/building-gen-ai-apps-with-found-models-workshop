@@ -1,13 +1,15 @@
 """
 Purpose:
-    BuildOn Postly
+    BuildOn Poster
 """
 
-# 3rd party imports
-import streamlit as st
-import requests
-import numpy as np
 import os
+
+# 3rd party imports
+import numpy as np
+import requests
+import streamlit as st
+from aws_requests_auth.boto_utils import BotoAWSRequestsAuth
 
 IMAGE_API = os.environ["IMAGE_API"]
 TEXT_API = os.environ["TEXT_API"]
@@ -18,11 +20,19 @@ st.set_page_config(layout="wide")
 def gen_summary(text):
     data = {"text": text}
 
+    auth_url = TEXT_API.replace("https://", "").replace("/", "")
+
+    auth = BotoAWSRequestsAuth(
+        aws_host=auth_url,
+        aws_region="us-east-1",  # HARDCODED to us-east-1
+        aws_service="lambda",
+    )
+
     headers = {
         "Content-Type": "application/json",
     }
 
-    resp = requests.post(TEXT_API, json=data, headers=headers)
+    resp = requests.post(TEXT_API, json=data, headers=headers, auth=auth)
     # print(resp.json())
     return resp.json()["text"]
 
@@ -34,7 +44,15 @@ def gen_image(text):
 
     data = {"text": text}
 
-    resp = requests.post(IMAGE_API, json=data, headers=headers)
+    auth_url = IMAGE_API.replace("https://", "").replace("/", "")
+
+    auth = BotoAWSRequestsAuth(
+        aws_host=auth_url,
+        aws_region="us-east-1",  # HARDCODED to us-east-1
+        aws_service="lambda",
+    )
+
+    resp = requests.post(IMAGE_API, json=data, headers=headers, auth=auth)
     # print(resp.json())
 
     return np.array(resp.json()["generated_image"])
@@ -100,7 +118,7 @@ def main() -> None:
     # Start the streamlit app
 
     st.markdown(
-        "<h1 style='text-align: center;'>BuildOn Postly</h1>", unsafe_allow_html=True
+        "<h1 style='text-align: center;'>BuildOn Poster</h1>", unsafe_allow_html=True
     )
 
     st.markdown(

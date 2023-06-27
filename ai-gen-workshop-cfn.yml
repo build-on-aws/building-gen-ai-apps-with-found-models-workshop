@@ -13,7 +13,10 @@ Parameters:
     Type: String
     Description: The domain name of the Sagemaker studio instance
     Default: 'd-aigensagemaker'
-
+  DockerImage:
+    Type: String
+    Description: TODO you must build the image, in the repo and push to your ECR -https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+    Default: 'TODO'
 
 Mappings:
   RegionMap:
@@ -224,8 +227,6 @@ Resources:
         ZipFile: |
           import json
           import boto3
-          import logging
-
 
           def parse_response(query_response):
               """Parse response and return generated image and the prompt"""
@@ -237,7 +238,6 @@ Resources:
           def lambda_handler(event, context):
 
               client = boto3.client('sagemaker-runtime')
-              content_type = "application/json"
               
               data_string = event["body"]
               text = json.loads(data_string)["text"]
@@ -278,12 +278,10 @@ Resources:
         ZipFile: |
           import json
           import boto3
-          import logging
 
           def lambda_handler(event, context):
 
               client = boto3.client('sagemaker-runtime')
-              content_type = "application/json"
               
               data_string = event["body"]
               text = json.loads(data_string)["text"]
@@ -402,6 +400,7 @@ Resources:
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
         - 'arn:aws:iam::aws:policy/AmazonElasticContainerRegistryPublicReadOnly'
+        - 'arn:aws:iam::aws:policy/AWSLambda_FullAccess'
 
   TaskRole:
     Type: AWS::IAM::Role
@@ -416,6 +415,7 @@ Resources:
       ManagedPolicyArns:
         - 'arn:aws:iam::aws:policy/AWSGlueSchemaRegistryFullAccess'
         - 'arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy'
+        - 'arn:aws:iam::aws:policy/AWSLambda_FullAccess'
 
 
   BuildOnTaskDefinition:
@@ -430,8 +430,8 @@ Resources:
       TaskRoleArn: !Ref TaskRole
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
-        - Name: build-on-postly
-          Image: public.ecr.aws/l1s9t3v0/build-on-postly:latest
+        - Name: build-on-poster
+          Image: !Ref DockerImage
           Environment:
             - Name: IMAGE_API
               Value: ''
@@ -448,8 +448,8 @@ Resources:
   BuildOnSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupDescription: allow port 80 to build_on_postly
-      GroupName: build_on_postly
+      GroupDescription: allow port 80 to build_on_poster
+      GroupName: build_on_poster
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: '80'

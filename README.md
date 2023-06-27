@@ -2,7 +2,7 @@
 
 Welcome to our hands-on workshop on building generative AI applications using Amazon SageMaker and Jumpstart Notebooks with foundational models. In this interactive session, you will learn how to harness the power of AI to create innovative, scalable, and user-friendly solutions for text and image generation tasks. You will be building a tool that will enable content authors to generate attractive images and taglines for their articles.
 
-![The deployed app, that takes text from an article and creates a tagline with a cover image](./build_on_postly_example.png)
+![The deployed app, that takes text from an article and creates a tagline with a cover image](./build_on_poster_example.png)
 
 Throughout the workshop, we will guide you through three key steps to develop and deploy your application:
 
@@ -15,6 +15,9 @@ Throughout the workshop, we will guide you through three key steps to develop an
 By the end of this workshop, you will have gained valuable hands-on experience in deploying and integrating cutting-edge AI models with AWS services to build creative and engaging applications.
 
 Here is the link to the [workshop](https://catalog.workshops.aws/building-gen-ai-apps-with-found-models/en-US)
+
+**Note:** If you are running the CloudFormation in your own account, you must build the Docker image first, and push to your own ECR repo. Then update the template with the image name on line [19](https://github.com/aws-banjo/building-gen-ai-apps-with-found-models-workshop/blob/main/ai-gen-workshop-cfn.yml#L19). More details can be found here: https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+
 
 ## Security
 
