@@ -16,16 +16,18 @@ By the end of this workshop, you will have gained valuable hands-on experience i
 
 Here is the link to the [workshop](https://catalog.workshops.aws/building-gen-ai-apps-with-found-models/en-US)
 
+### Building the Docker Image
+
 **Note:** If you are running the CloudFormation in your own account, you must build the Docker image first, and push to your own ECR repo. Then update the template with the image name on line [19](https://github.com/aws-banjo/building-gen-ai-apps-with-found-models-workshop/blob/main/ai-gen-workshop-cfn.yml#L19). 
 
-To build the image you must have [Docker](https://docs.docker.com/get-docker/) installed
+To build the image you must have [Docker](https://docs.docker.com/get-docker/) installed.
 
-Then you cna run
+Then you can run
 ```bash
 docker build . -t build_on_poster
 ```
 
-More details can be found here: https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+More details can be found here on how to push the image yo your account: https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
 
 ## Security
