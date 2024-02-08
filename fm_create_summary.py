@@ -19,7 +19,7 @@ def lambda_handler(event, context):
     CONTENT_TYPE = "application/json"
 
     payload = {
-        "text_inputs": prompt,
+        "inputs": prompt,
         "max_length": MAX_LENGTH,
         "num_return_sequences": NUM_RETURN_SEQUENCES,
         "top_k": TOP_K,
@@ -35,7 +35,7 @@ def lambda_handler(event, context):
         EndpointName=endpoint_name, ContentType=CONTENT_TYPE, Body=payload
     )
     model_predictions = json.loads(response["Body"].read())
-    generated_text = model_predictions["generated_texts"][0]
+    generated_text = model_predictions[0]["generated_text"]
     print(f"Response: {generated_text}")
 
     resp = json.dumps({"text": generated_text})
