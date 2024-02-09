@@ -18,7 +18,7 @@ Here is the link to the [workshop](https://catalog.workshops.aws/building-gen-ai
 
 ### Building the Docker Image
 
-**Note:** If you are running the CloudFormation in your own account, you must build the Docker image first, and push to your own ECR repo. Then update the template with the image name on line [19](https://github.com/aws-banjo/building-gen-ai-apps-with-found-models-workshop/blob/main/ai-gen-workshop-cfn.yml#L19). 
+**Note:** If you are running the CloudFormation in your own account, you must build the Docker image first, and push to your own ECR repo. Then update the template with the image name on line [19](https://github.com/build-on-aws/building-gen-ai-apps-with-found-models-workshop/blob/main/ai-gen-workshop-cfn.yml#L19). 
 
 To build the image you must have [Docker](https://docs.docker.com/get-docker/) installed.
 
