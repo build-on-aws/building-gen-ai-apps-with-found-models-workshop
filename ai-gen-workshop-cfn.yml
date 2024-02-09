@@ -444,19 +444,3 @@ Resources:
               awslogs-region: !Ref AWS::Region
               awslogs-group: !Ref CwLogGroup
               awslogs-stream-prefix: ecs
-
-  BuildOnSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: allow port 80 to build_on_poster
-      GroupName: build_on_poster
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: '80'
-          ToPort: '80'
-          CidrIp: '0.0.0.0/0'
-      SecurityGroupEgress:
-        - CidrIp: 0.0.0.0/0
-          Description: Allow all outbound traffic by default
-          IpProtocol: "-1"
-      VpcId: !GetAtt DefaultVpcFinder.VpcId
