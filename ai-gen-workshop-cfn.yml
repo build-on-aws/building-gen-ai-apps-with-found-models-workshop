@@ -12,7 +12,10 @@ Parameters:
     Type: String
     Description: The domain name of the SageMaker studio instance
     Default: "d-aigensagemaker"
-
+  DockerImage:
+    Type: String
+    Description: TODO you must build the image, in the repo and push to your ECR -https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
+    Default: "TODO"
 Mappings:
   RegionMap:
     us-east-1:
@@ -396,7 +399,7 @@ Resources:
       ExecutionRoleArn: !Ref ExecutionRole
       ContainerDefinitions:
         - Name: build-on-poster
-          Image: public.ecr.aws/o3s1z9h7/build-on-poster:latest
+          Image: !Ref DockerImage
           Environment:
             - Name: IMAGE_API
               Value: ""
